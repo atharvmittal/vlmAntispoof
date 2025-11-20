@@ -1,0 +1,18 @@
+{
+    "fusion_only": {
+        "use_mac": false,
+        "use_mope": false
+    },
+    "fusion_mac": {
+        "use_mac": true,
+        "use_mope": false
+    },
+    "fusion_mope": {
+        "use_mac": false,
+        "use_mope": true
+    },
+    "fusion_full": {
+        "use_mac": true,
+        "use_mope": true
+    }
+}
