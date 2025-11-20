@@ -1,26 +1,56 @@
-# VLM AntiSpoof
-# VLM AntiSpoof (Face + Voice Multimodal Anti-Spoofing)
+# VLM-AntiSpoof (Face + Voice Multimodal Anti-Spoofing)
 
-A multimodal anti-spoofing system combining CLIP (image encoder) and ResNet18 (audio encoder) with optional MAC Loss and MoPE.
-
-This project targets **real-world** face & voice spoof detection using:
-- CASIA-FASD (hard face spoof dataset)
-- ASVspoof 2021 DF (deepfake audio)
-- Multimodal fusion with shared embeddings
+A lightweight multimodal anti-spoofing system that combines **CLIP-based visual encoding** with **audio spectrogram encoding** for detecting spoof attacks across face and voice modalities.
 
 ---
 
-## 🚀 Features
-- CLIP ViT-B/32 image encoder (frozen)
-- ResNet18 audio encoder (trainable)
-- Fusion MLP (1024 → 512 → 2)
-- MAC Loss (modality alignment)
-- MoPE (prompt enhancement)
-- Ablation-ready training pipeline
-- Clean subject-disjoint fusion dataset
-- Ready for cross-dataset generalization
+## 🚀 Key Features
+- **Vision–Language Model (CLIP) Encoder** used for face embeddings  
+- **Audio Encoder** based on ResNet18 operating on mel-spectrograms  
+- **Fusion Head** that jointly learns cross-modal correlations  
+- Support for **MAC (Modality Alignment Constraint)**  
+- Support for **MoPE (Modality Prompt Enhancement)**  
+- Clean, modular code under `scripts/`
 
 ---
 
-## 📂 Repository Structure
+## 📁 Repository Structure
+scripts/
+dataset.py # Loads face images + mel spectrogram pairs
+model.py # CLIP image encoder + audio encoder + fusion head
+train.py # Training loop with optional MAC/MoPE losses
+launcher.py # Runs selected experiment
+smoke_test.py # Verifies model+dataset pipeline quickly
 
+data/
+face/ # CASIA-FASD frames
+audio/ # ASVspoof DF mel-spectrograms
+fusion/ # Pre-built pairings of (face, audio, label)
+
+yaml
+Copy code
+
+---
+
+## 🔧 Quick Start
+Run this to verify everything works:
+
+```bash
+python scripts/smoke_test.py
+Then train:
+
+bash
+Copy code
+python scripts/launcher.py
+📦 Datasets Used
+CASIA-FASD (face anti-spoofing)
+
+ASVspoof 2021 DF (voice anti-spoofing)
+
+Custom fusion pairs linking face frames to audio samples
+
+📝 License
+MIT License — free to use, modify, and distribute with attribution.
+
+yaml
+Copy code
