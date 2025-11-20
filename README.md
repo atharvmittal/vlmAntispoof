@@ -27,8 +27,7 @@ face/ # CASIA-FASD frames
 audio/ # ASVspoof DF mel-spectrograms
 fusion/ # Pre-built pairings of (face, audio, label)
 
-yaml
-Copy code
+
 
 ---
 
@@ -39,9 +38,8 @@ Run this to verify everything works:
 python scripts/smoke_test.py
 Then train:
 
-bash
-Copy code
 python scripts/launcher.py
+
 📦 Datasets Used
 CASIA-FASD (face anti-spoofing)
 
@@ -52,5 +50,4 @@ Custom fusion pairs linking face frames to audio samples
 📝 License
 MIT License — free to use, modify, and distribute with attribution.
 
-yaml
-Copy code
+
